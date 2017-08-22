@@ -51,6 +51,7 @@ public:
 	void DeleteElement(std::shared_ptr<CElement>& pElement)
 	{
 		m_Sketch.remove(pElement);
+		UpdateAllViews(nullptr, 0, pElement.get());
 	}
 protected:
 	std::list <std::shared_ptr<CElement>> m_Sketch;

@@ -8,7 +8,7 @@
 #include "Element.h"
 
 
-class CSketcherView : public CView
+class CSketcherView : public CScrollView
 {
 protected: // create from serialization only
 	CSketcherView();
@@ -55,6 +55,8 @@ protected:
 protected:
 	std::shared_ptr<CElement> CreateElement() const;
 	virtual void OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/);
+public:
+	virtual void OnInitialUpdate();
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp

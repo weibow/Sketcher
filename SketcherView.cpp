@@ -23,9 +23,9 @@
 
 // CSketcherView
 
-IMPLEMENT_DYNCREATE(CSketcherView, CView)
+IMPLEMENT_DYNCREATE(CSketcherView, CScrollView)
 
-BEGIN_MESSAGE_MAP(CSketcherView, CView)
+BEGIN_MESSAGE_MAP(CSketcherView, CScrollView)
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
@@ -146,8 +146,15 @@ void CSketcherView::OnLButtonUp(UINT nFlags, CPoint point)
 	//CView::OnLButtonUp(nFlags, point);
 	if (m_pTempElement)
 	{
+		CRect aRect{ m_pTempElement->GetEnclosingRect() };
 		GetDocument()->AddElement(m_pTempElement);
-		InvalidateRect(&m_pTempElement->GetEnclosingRect());
+
+		CClientDC aDC{ this };
+		OnPrepareDC(&aDC);
+		aDC.LPtoDP(aRect);
+		InvalidateRect(aRect);
+
+		//InvalidateRect(&m_pTempElement->GetEnclosingRect());
 		m_pTempElement.reset();
 	}
 }
@@ -168,6 +175,8 @@ void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 	//Define a Device Context object for the view
 	CClientDC aDC{ this };		//DC is for this view
 	
+	OnPrepareDC(&aDC);
+	aDC.DPtoLP(&point);
 
 	//CView::OnMouseMove(nFlags, point);
 	if ((nFlags & MK_LBUTTON) && (this == GetCapture()))
@@ -197,7 +206,9 @@ void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 void CSketcherView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-
+	CClientDC aDC{ this };
+	OnPrepareDC(&aDC);
+	aDC.DPtoLP(&point);
 	//CView::OnLButtonDown(nFlags, point);
 	m_FirstPoint = point;
 
@@ -224,7 +235,7 @@ std::shared_ptr<CElement> CSketcherView::CreateElement() const
 		//return std::make_shared<CLine>{m_FirstPoint, m_SecondPoint, color);
 		return std::make_shared<CLine>(m_FirstPoint, m_SecondPoint, color);
 	default:
-		AfxMessageBox(_T('Bad Element code'), MB_OK);
+		AfxMessageBox(_T("Bad Element code"), MB_OK);
 		AfxAbort();
 		return nullptr;
 	}
@@ -241,7 +252,13 @@ void CSketcherView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 	// TODO: Add your specialized code here and/or call the base class
 	if (pHint)
 	{
-		//InvalidateRect(dynamic_cast<CElement*>(pHint->GetEnclosingRect());
+		CClientDC aDC{ this };
+		OnPrepareDC(&aDC);
+		
+		CRect aRect{ dynamic_cast<CElement*>(pHint)->GetEnclosingRect() };
+		//InvalidateRect(dynamic_cast<CElement*>(pHint)->GetEnclosingRect());
+		aDC.LPtoDP(aRect);
+		InvalidateRect(aRect);
 	} 
 	else
 	{
@@ -249,3 +266,13 @@ void CSketcherView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 	}
 }
 ;
+
+void CSketcherView::OnInitialUpdate()
+{
+	CScrollView::OnInitialUpdate();
+	CSize DocSize{ 20000, 20000 };
+
+	SetScrollSizes(MM_TEXT, DocSize, CSize{ 500, 500 }, CSize{ 20, 20 });
+
+	// TODO: Add your specialized code here and/or call the base class
+}
