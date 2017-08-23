@@ -211,7 +211,6 @@ void CSketcherView::OnLButtonDown(UINT nFlags, CPoint point)
 	aDC.DPtoLP(&point);
 	//CView::OnLButtonDown(nFlags, point);
 	m_FirstPoint = point;
-
 	SetCapture();
 }
 
@@ -256,7 +255,6 @@ void CSketcherView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 		OnPrepareDC(&aDC);
 		
 		CRect aRect{ dynamic_cast<CElement*>(pHint)->GetEnclosingRect() };
-		//InvalidateRect(dynamic_cast<CElement*>(pHint)->GetEnclosingRect());
 		aDC.LPtoDP(aRect);
 		InvalidateRect(aRect);
 	} 
