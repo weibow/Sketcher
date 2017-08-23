@@ -1,5 +1,5 @@
 #pragma once
-
+#include <memory>
 // CElement command target
 
 class CElement : public CObject
@@ -12,7 +12,7 @@ protected:
 public:
 	
 	virtual ~CElement();
-	virtual void Draw(CDC* pDC) {}	//Virtual draw operation
+	virtual void Draw(CDC* pDC, std::shared_ptr<CElement>) {}	//Virtual draw operation
 	//Get the element enclosing rectangle
 	const CRect& GetEnclosingRect() const { return m_EnclosingRect; }
 protected:

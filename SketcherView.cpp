@@ -71,7 +71,7 @@ void CSketcherView::OnDraw(CDC* pDC)
 		for (const auto& pElement : *pDoc)
 		{
 			if (pDC->RectVisible(pElement->GetEnclosingRect()))
-				pElement->Draw(pDC);
+				pElement->Draw(pDC, m_pSelected);
 		}
 	}
 //	for (auto iter = pDoc->begin(); iter != pDoc->
@@ -319,4 +319,14 @@ void CSketcherView::OnContextMenu(CWnd* pWnd, CPoint point)
 //	CMenu* pContext{ menu.GetSubMenu(m_pSelected ? 0 : 1) };
 	ASSERT(pContext != nullptr);
 	pContext->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTALIGN, point.x, point.y, this);
+}
+
+
+void CSketcherView::OnElementDelete()
+{
+	if (m_pSelected)
+	{
+		GetDocument()->DeleteElement(m_pSelected);
+		m_pSelected.reset();
+	}
 }

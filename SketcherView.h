@@ -61,6 +61,7 @@ protected:
 	std::shared_ptr<CElement> m_pSelected;
 public:
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
+	void OnElementDelete();
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp

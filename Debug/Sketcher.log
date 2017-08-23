@@ -1,7 +1,27 @@
 ﻿  SketcherView.cpp
+d:\c++\sketcher\curve.h(11): error C3668: 'CCurve::Draw': method with override specifier 'override' did not override any base class methods
+d:\c++\sketcher\circle.h(8): error C3668: 'CCircle::Draw': method with override specifier 'override' did not override any base class methods
+d:\c++\sketcher\sketcherview.cpp(191): error C2660: 'CElement::Draw': function does not take 1 arguments
+d:\c++\sketcher\sketcherview.cpp(198): error C2660: 'CElement::Draw': function does not take 1 arguments
+d:\c++\sketcher\sketcherview.cpp(207): error C2660: 'CElement::Draw': function does not take 1 arguments
+  Rectangle.cpp
+d:\c++\sketcher\rectangle.cpp(37): error C2511: 'void CRectangle::Draw(CDC *)': overloaded member function not found in 'CRectangle'
+  d:\c++\sketcher\rectangle.h(3): note: see declaration of 'CRectangle'
+d:\c++\sketcher\rectangle.cpp(39): error C2352: 'CElement::CreatePen': illegal call of non-static member function
+  d:\c++\sketcher\element.h(21): note: see declaration of 'CElement::CreatePen'
+d:\c++\sketcher\rectangle.cpp(45): error C2228: left of '.x' must have class/struct/union
+d:\c++\sketcher\rectangle.cpp(45): error C2228: left of '.y' must have class/struct/union
+d:\c++\sketcher\rectangle.cpp(46): error C2228: left of '.x' must have class/struct/union
+d:\c++\sketcher\rectangle.cpp(46): error C2228: left of '.y' must have class/struct/union
+  Line.cpp
+d:\c++\sketcher\line.cpp(25): error C2511: 'void CLine::Draw(CDC *)': overloaded member function not found in 'CLine'
+  d:\c++\sketcher\line.h(3): note: see declaration of 'CLine'
+d:\c++\sketcher\line.cpp(28): error C2352: 'CElement::CreatePen': illegal call of non-static member function
+  d:\c++\sketcher\element.h(21): note: see declaration of 'CElement::CreatePen'
+d:\c++\sketcher\line.cpp(33): error C2597: illegal reference to non-static member 'CElement::m_StartPoint'
+d:\c++\sketcher\line.cpp(34): error C2597: illegal reference to non-static member 'CLine::m_EndPoint'
+  Curve.cpp
+d:\c++\sketcher\curve.h(11): error C3668: 'CCurve::Draw': method with override specifier 'override' did not override any base class methods
+  Circle.cpp
+d:\c++\sketcher\circle.h(8): error C3668: 'CCircle::Draw': method with override specifier 'override' did not override any base class methods
   Generating Code...
-  Skipping... (no relevant changes detected)
-  SketcherDoc.cpp
-  Sketcher.cpp
-  Sketcher.vcxproj -> D:\C++\Sketcher\Debug\Sketcher.exe
-  Sketcher.vcxproj -> D:\C++\Sketcher\Debug\Sketcher.pdb (Partial PDB)
