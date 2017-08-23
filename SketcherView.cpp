@@ -34,6 +34,7 @@ BEGIN_MESSAGE_MAP(CSketcherView, CScrollView)
 //	ON_WM_MBUTTONDOWN()
 	ON_WM_MOUSEMOVE()
 	ON_WM_LBUTTONDOWN()
+	ON_WM_CONTEXTMENU()
 END_MESSAGE_MAP()
 
 // CSketcherView construction/destruction
@@ -197,6 +198,10 @@ void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 			m_pTempElement->Draw(&aDC);
 		}
 	}
+	else
+	{
+		m_pSelected = GetDocument()->FindElement(point);
+	}
 
 	m_pTempElement = CreateElement();
 	m_pTempElement->Draw(&aDC);
@@ -273,4 +278,45 @@ void CSketcherView::OnInitialUpdate()
 	SetScrollSizes(MM_TEXT, DocSize, CSize{ 500, 500 }, CSize{ 20, 20 });
 
 	// TODO: Add your specialized code here and/or call the base class
+}
+
+
+void CSketcherView::OnContextMenu(CWnd* pWnd, CPoint point)
+{
+	// TODO: Add your message handler code here
+	CMenu menu;
+	menu.LoadMenu(IDR_CONTEXT_MENU);
+	CMenu* pContext{};
+	if (m_pSelected)
+	{
+		pContext = menu.GetSubMenu(0);
+	}
+	else
+	{
+		pContext = menu.GetSubMenu(1);
+		// Check color menu items
+		ElementColor color{ GetDocument()->GetElementColor() };
+		menu.CheckMenuItem(ID_COLOR_BLACK,
+			(ElementColor::BLACK == color ? MF_CHECKED : MF_UNCHECKED) | MF_BYCOMMAND);
+		menu.CheckMenuItem(ID_COLOR_RED,
+			(ElementColor::RED == color ? MF_CHECKED : MF_UNCHECKED) | MF_BYCOMMAND);
+		menu.CheckMenuItem(ID_COLOR_GREEN,
+			(ElementColor::GREEN == color ? MF_CHECKED : MF_UNCHECKED) | MF_BYCOMMAND);
+		menu.CheckMenuItem(ID_COLOR_BLUE,
+			(ElementColor::BLUE == color ? MF_CHECKED : MF_UNCHECKED) | MF_BYCOMMAND);
+		// Check element menu items
+		ElementType type{ GetDocument()->GetElementType() };
+		menu.CheckMenuItem(ID_ELEMENT_LINE,
+			(ElementType::LINE == type ? MF_CHECKED : MF_UNCHECKED) | MF_BYCOMMAND);
+		menu.CheckMenuItem(ID_ELEMENT_RECTANGLE,
+			(ElementType::RECTANGLE == type ? MF_CHECKED : MF_UNCHECKED) | MF_BYCOMMAND);
+		menu.CheckMenuItem(ID_ELEMENT_CIRCLE,
+			(ElementType::CIRCLE == type ? MF_CHECKED : MF_UNCHECKED) | MF_BYCOMMAND);
+		menu.CheckMenuItem(ID_ELEMENT_CURVE,
+			(ElementType::CURVE == type ? MF_CHECKED : MF_UNCHECKED) | MF_BYCOMMAND);
+	}
+
+//	CMenu* pContext{ menu.GetSubMenu(m_pSelected ? 0 : 1) };
+	ASSERT(pContext != nullptr);
+	pContext->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTALIGN, point.x, point.y, this);
 }

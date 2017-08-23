@@ -43,6 +43,16 @@ public:
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
 #endif
+	// Finds the element under the point
+	std::shared_ptr<CElement> FindElement(const CPoint& point)const
+	{
+		for (const auto& pElement : m_Sketch)
+		{
+			if (pElement->GetEnclosingRect().PtInRect(point))
+				return pElement;
+		}
+		return nullptr;
+	}
 	void AddElement(std::shared_ptr<CElement>& pElement)
 	{
 		m_Sketch.push_back(pElement);

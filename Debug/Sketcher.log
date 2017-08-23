@@ -1,11 +1,7 @@
 ﻿  SketcherView.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
-  TextDialog.cpp
   SketcherDoc.cpp
   Sketcher.cpp
-  MainFrm.cpp
-  Element.cpp
-  ChildFrm.cpp
   Sketcher.vcxproj -> D:\C++\Sketcher\Debug\Sketcher.exe
   Sketcher.vcxproj -> D:\C++\Sketcher\Debug\Sketcher.pdb (Partial PDB)

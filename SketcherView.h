@@ -57,6 +57,10 @@ protected:
 	virtual void OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/);
 public:
 	virtual void OnInitialUpdate();
+protected:
+	std::shared_ptr<CElement> m_pSelected;
+public:
+	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp
