@@ -74,25 +74,6 @@ void CSketcherView::OnDraw(CDC* pDC)
 				pElement->Draw(pDC, m_pSelected);
 		}
 //	}
-//	for (auto iter = pDoc->begin(); iter != pDoc->
-	//CPen aPen;
-	//aPen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-	//CPen* pOldPen{ pDC->SelectObject(&aPen) };
-	//pDC->Ellipse(50, 50, 150, 150);
-
-	//pDC->MoveTo(50, 50);
-	//pDC->LineTo(50, 200);
-	//pDC->LineTo(150, 200);
-	//pDC->LineTo(150, 50);
-	//pDC->LineTo(50, 50);
-	//pDC->Ellipse(50, 50, 150, 150);
-
-	//CRect rect{ 250, 50, 300, 100 };
-	//CPoint start{ 275, 100 };
-	//CPoint end{ 250, 75 };
-	//pDC->Arc(&rect, start, end);
-	//pDC->SelectObject(pOldPen);
-	// TODO: add draw code for native data here
 }
 
 
@@ -137,8 +118,6 @@ CSketcherDoc* CSketcherView::GetDocument() const // non-debug version is inline
 
 
 // CSketcherView message handlers
-
-
 void CSketcherView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
@@ -159,14 +138,6 @@ void CSketcherView::OnLButtonUp(UINT nFlags, CPoint point)
 		m_pTempElement.reset();
 	}
 }
-
-
-//void CSketcherView::OnMButtonDown(UINT nFlags, CPoint point)
-//{
-//	// TODO: Add your message handler code here and/or call default
-//
-//	CView::OnMButtonDown(nFlags, point);
-//}
 
 
 void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
@@ -191,12 +162,14 @@ void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 				m_pTempElement->Draw(&aDC);
 				return;
 			}
+			else
+			{
+				aDC.SetROP2(R2_NOTXORPEN);
+				m_pTempElement->Draw(&aDC);
+			}
 		}
-		else
-		{
-			aDC.SetROP2(R2_NOTXORPEN);
-			m_pTempElement->Draw(&aDC);
-		}
+		m_pTempElement = CreateElement();
+		m_pTempElement->Draw(&aDC);
 	}
 	else
 	{
@@ -210,9 +183,6 @@ void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 				GetDocument()->UpdateAllViews(nullptr, 0, pOldSelected.get());
 		}
 	}
-
-	m_pTempElement = CreateElement();
-	m_pTempElement->Draw(&aDC);
 }
 
 
@@ -243,8 +213,7 @@ std::shared_ptr<CElement> CSketcherView::CreateElement() const
 		return std::make_shared<CCircle>(m_FirstPoint, m_SecondPoint, color);		
 	case ElementType::RECTANGLE:
 		return std::make_shared<CRectangle>(m_FirstPoint, m_SecondPoint, color);
-	case ElementType::LINE:
-		//return std::make_shared<CLine>{m_FirstPoint, m_SecondPoint, color);
+	case ElementType::LINE:		
 		return std::make_shared<CLine>(m_FirstPoint, m_SecondPoint, color);
 	default:
 		AfxMessageBox(_T("Bad Element code"), MB_OK);
@@ -257,16 +226,13 @@ std::shared_ptr<CElement> CSketcherView::CreateElement() const
 
 
 
-
-
 void CSketcherView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint)
 {
 	// TODO: Add your specialized code here and/or call the base class
 	if (pHint)
 	{
-		CClientDC aDC{ this };
-		OnPrepareDC(&aDC);
-		
+		CClientDC aDC {this};
+		OnPrepareDC(&aDC);		
 		CRect aRect{ dynamic_cast<CElement*>(pHint)->GetEnclosingRect() };
 		aDC.LPtoDP(aRect);
 		InvalidateRect(aRect);
@@ -284,8 +250,6 @@ void CSketcherView::OnInitialUpdate()
 	CSize DocSize{ 20000, 20000 };
 
 	SetScrollSizes(MM_TEXT, DocSize, CSize{ 500, 500 }, CSize{ 20, 20 });
-
-	// TODO: Add your specialized code here and/or call the base class
 }
 
 
