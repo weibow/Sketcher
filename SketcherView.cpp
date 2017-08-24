@@ -200,7 +200,15 @@ void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 	}
 	else
 	{
+		auto pOldSelected = m_pSelected;
 		m_pSelected = GetDocument()->FindElement(point);
+		if (m_pSelected != pOldSelected)
+		{
+			if (m_pSelected)
+				GetDocument()->UpdateAllViews(nullptr, 0, m_pSelected.get());
+			if (pOldSelected)
+				GetDocument()->UpdateAllViews(nullptr, 0, pOldSelected.get());
+		}
 	}
 
 	m_pTempElement = CreateElement();

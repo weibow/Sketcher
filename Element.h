@@ -10,7 +10,7 @@ protected:
 	COLORREF m_Color;
 	CRect m_EnclosingRect;
 public:
-	
+	static const COLORREF SELECT_COLOR{ RGB(255,0,180) };
 	virtual ~CElement();
 	virtual void Draw(CDC* pDC, std::shared_ptr<CElement> pElement=nullptr) {}	//Virtual draw operation
 	//Get the element enclosing rectangle

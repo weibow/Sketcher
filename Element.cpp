@@ -6,7 +6,7 @@
 #include "Element.h"
 
 
-static const COLORREF SELECT_COLOR{ RGB(255,0,180) };
+
 
 CElement::CElement(const CPoint& start, COLORREF color, int penWidth) :
 	m_StartPoint{ start }, m_PenWidth{ penWidth }, m_Color{ color } 

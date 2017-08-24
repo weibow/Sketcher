@@ -1,3 +1,13 @@
-﻿  Rectangle.cpp
-Text.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall CText::Draw(class CDC *,class std::shared_ptr<class CElement>)" (?Draw@CText@@UAEXPAVCDC@@V?$shared_ptr@VCElement@@@std@@@Z)
-D:\C++\Sketcher\Debug\Sketcher.exe : fatal error LNK1120: 1 unresolved externals
+﻿  Text.cpp
+  Element.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  SketcherView.cpp
+  SketcherDoc.cpp
+  Sketcher.cpp
+  Rectangle.cpp
+  Line.cpp
+  Curve.cpp
+  Circle.cpp
+  Sketcher.vcxproj -> D:\C++\Sketcher\Debug\Sketcher.exe
+  Sketcher.vcxproj -> D:\C++\Sketcher\Debug\Sketcher.pdb (Partial PDB)
