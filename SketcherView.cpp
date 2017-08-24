@@ -67,13 +67,13 @@ void CSketcherView::OnDraw(CDC* pDC)
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
-	for (auto iter = pDoc->begin(); iter != pDoc->end(); ++iter) {
+//	for (auto iter = pDoc->begin(); iter != pDoc->end(); ++iter) {
 		for (const auto& pElement : *pDoc)
 		{
 			if (pDC->RectVisible(pElement->GetEnclosingRect()))
 				pElement->Draw(pDC, m_pSelected);
 		}
-	}
+//	}
 //	for (auto iter = pDoc->begin(); iter != pDoc->
 	//CPen aPen;
 	//aPen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));

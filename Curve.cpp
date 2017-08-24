@@ -23,10 +23,11 @@ CCurve::CCurve(const CPoint& first, const CPoint& second, COLORREF color) :
 }
 		
 
-void CCurve::Draw(CDC* pDC)
+void CCurve::Draw(CDC* pDC,std::shared_ptr<CElement> pElement)
 {
 	CPen aPen;
-	CreatePen(aPen);
+
+	CreatePen(aPen, pElement);
 
 	CPen* pOldPen{ pDC->SelectObject(&aPen) };
 	

@@ -29,10 +29,10 @@ CCircle::CCircle(const CPoint& start, const CPoint& end, COLORREF color) :
 	m_EnclosingRect.InflateRect(m_PenWidth, m_PenWidth);
 }
 
-void CCircle::Draw(CDC* pDC)
+void CCircle::Draw(CDC* pDC, std::shared_ptr<CElement> pElement)
 {
 	CPen aPen;
-	CreatePen(aPen);
+	CreatePen(aPen, pElement);
 	CPen* pOldPen{ pDC->SelectObject(&aPen) };
 	
 	CBrush* pOldBrush{ dynamic_cast<CBrush*>(pDC->SelectStockObject(NULL_BRUSH)) };

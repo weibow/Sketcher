@@ -33,10 +33,11 @@ CRectangle::CRectangle(const CPoint& start, const CPoint& end, COLORREF color) :
 
 
 //Draw a CRectangle object
-void CRectangle::Draw(CDC* pDC)
+void CRectangle::Draw(CDC* pDC, std::shared_ptr<CElement> pElement)
 {
 	CPen aPen;
-	CreatePen(aPen);
+
+	CreatePen(aPen, pElement);
 
 	//Select the pen and the null brush
 	CPen* pOldPen { pDC->SelectObject(&aPen) };

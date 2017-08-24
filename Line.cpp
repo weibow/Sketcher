@@ -21,11 +21,11 @@ CLine::CLine(const CPoint& start, const CPoint& end, COLORREF color) :
 	m_EnclosingRect.InflateRect(m_PenWidth, m_PenWidth);
 }
 
-void CLine::Draw(CDC* pDC)
+void CLine::Draw(CDC* pDC, std::shared_ptr<CElement> pElement)
 {
 	//Create a pen for this object and initialize it
 	CPen aPen;	
-	CreatePen(aPen);
+	CreatePen(aPen, pElement);
 
 	CPen* pOldPen{ pDC->SelectObject(&aPen) };
 	

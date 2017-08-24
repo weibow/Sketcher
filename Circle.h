@@ -5,7 +5,7 @@ class CCircle :
 {
 public:	
 	virtual ~CCircle();
-	virtual void Draw(CDC* pDC)  override;
+	virtual void Draw(CDC* pDC, std::shared_ptr<CElement> pElement = nullptr)  override;
 	CCircle(const CPoint& start, const CPoint& end, COLORREF color) ;
 protected:
 	CPoint m_BottomRight;

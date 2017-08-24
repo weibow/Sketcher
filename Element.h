@@ -12,13 +12,13 @@ protected:
 public:
 	
 	virtual ~CElement();
-	virtual void Draw(CDC* pDC, std::shared_ptr<CElement>) {}	//Virtual draw operation
+	virtual void Draw(CDC* pDC, std::shared_ptr<CElement> pElement=nullptr) {}	//Virtual draw operation
 	//Get the element enclosing rectangle
 	const CRect& GetEnclosingRect() const { return m_EnclosingRect; }
 protected:
 	CElement();
 	CElement(const CPoint& start, COLORREF color, int penWidth = 1);
-	void CreatePen(CPen& aPen);
+	void CreatePen(CPen& aPen, std::shared_ptr<CElement> pElement);
 };
 
 
