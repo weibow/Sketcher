@@ -15,6 +15,8 @@
 #include "Rectangle.h"
 #include "Curve.h"
 #include "Circle.h"
+#include "Text.h"
+#include "TextDialog.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -192,9 +194,28 @@ void CSketcherView::OnLButtonDown(UINT nFlags, CPoint point)
 	CClientDC aDC{ this };
 	OnPrepareDC(&aDC);
 	aDC.DPtoLP(&point);
-	//CView::OnLButtonDown(nFlags, point);
-	m_FirstPoint = point;
-	SetCapture();
+	CSketcherDoc* pDoc{ GetDocument() };
+
+	if (pDoc->GetElementType() == ElementType::TEXT)
+	{
+		CTextDialog aDlg;
+		if (aDlg.DoModal() == IDOK)
+		{
+			CSize textExtent {aDC.GetOutputTextExtent(aDlg.m_TextString)};
+			textExtent.cx *= 1;
+			textExtent.cy *= 1;
+			std::shared_ptr<CElement> pTextElement
+				{std::make_shared<CText>(point, point + textExtent, aDlg.m_TextString,
+					static_cast<COLORREF>(pDoc->GetElementColor()))};
+			pDoc->AddElement(pTextElement);
+			pDoc->UpdateAllViews(nullptr, 0, pTextElement.get());
+		}
+	}
+	else
+	{
+		m_FirstPoint = point;
+		SetCapture();
+	}
 }
 
 

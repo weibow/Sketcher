@@ -88,6 +88,7 @@ BEGIN
         MENUITEM "Circle",                      ID_ELEMENT_CIRCLE
         MENUITEM "Curve",                       ID_ELEMENT_CURVE
         MENUITEM "Ellipse",                     ID_ELEMENT_ELLIPSE
+        MENUITEM "Text",                        ID_ELEMENT_TEXT
         MENUITEM SEPARATOR
         MENUITEM "&Black",                      ID_COLOR_BLACK
         MENUITEM "Red",                         ID_COLOR_RED
@@ -315,16 +316,6 @@ BEGIN
     BEGIN
         MENUITEM "&About Sketcher...",          ID_APP_ABOUT
     END
-END
-
-IDR_CONTEXT_MENU MENU
-BEGIN
-    POPUP "element"
-    BEGIN
-        MENUITEM "Move",                        ID_ELEMENT_MOVE
-        MENUITEM "Delete",                      ID_ELEMENT_DELETE
-    END
-    MENUITEM "no element",                  0
 END
 
 

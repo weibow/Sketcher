@@ -9,7 +9,6 @@
 #define ID_WINDOW_MANAGER               131
 #define IDR_MENU1                       311
 #define IDR_CONTEXT_MENU                311
-#define IDR_MENU2                       315
 #define IDC_EDIT_TEXT                   1000
 #define ID_COLOR_BLACK                  32771
 #define ID_COLOR_RED                    32772
@@ -24,8 +23,6 @@
 #define ID_WINDOW                       32781
 #define ID_BUTTON32789                  32789
 #define ID_BUTTON32790                  32790
-#define ID_ELEMENT_MOVE                 32791
-#define ID_ELEMENT_DELETE               32792
 #define ID_BUTTON32793                  32793
 #define ID_ELEMENT_TEXT                 32794
 #define ID_ELEMENT_MOVE32795            32795
@@ -36,7 +33,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        316
-#define _APS_NEXT_COMMAND_VALUE         32797
+#define _APS_NEXT_COMMAND_VALUE         32798
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
