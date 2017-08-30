@@ -204,6 +204,7 @@
     <ClInclude Include="ElementType.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="PenDialog.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sketcher.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="Element.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="PenDialog.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Sketcher.cpp" />
     <ClCompile Include="SketcherDoc.cpp" />

@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by Sketcher.rc
+// Microsoft Visual C++ 生成的包含文件。
+// 供 Sketcher.rc 使用
 //
 #define IDD_TEXT_DLG                    9
 #define IDD_ABOUTBOX                    100
@@ -9,7 +9,14 @@
 #define ID_WINDOW_MANAGER               131
 #define IDR_MENU1                       311
 #define IDR_CONTEXT_MENU                311
+#define IDD_PENWIDTH_DLG                316
 #define IDC_EDIT_TEXT                   1000
+#define IDC_PENWIDTH0                   1001
+#define IDC_PENWIDTH2                   1002
+#define IDC_PENWIDTH1                   1003
+#define IDC_PENWIDTH3                   1004
+#define IDC_PENWIDTH5                   1005
+#define IDC_PENWIDTH4                   1006
 #define ID_COLOR_BLACK                  32771
 #define ID_COLOR_RED                    32772
 #define ID_COLOR_GREEN                  32773
@@ -22,19 +29,21 @@
 #define ID_ELEMENT_ELLIPSE              32780
 #define ID_WINDOW                       32781
 #define ID_BUTTON32789                  32789
+#define ID_PENWIDTH                     32789
 #define ID_BUTTON32790                  32790
 #define ID_BUTTON32793                  32793
 #define ID_ELEMENT_TEXT                 32794
 #define ID_ELEMENT_MOVE32795            32795
 #define ID_ELEMENT_DELETE32796          32796
+#define ID_PEN_WIDTH                    32798
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        316
-#define _APS_NEXT_COMMAND_VALUE         32798
-#define _APS_NEXT_CONTROL_VALUE         1001
+#define _APS_NEXT_RESOURCE_VALUE        318
+#define _APS_NEXT_COMMAND_VALUE         32799
+#define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

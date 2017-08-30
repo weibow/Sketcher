@@ -10,7 +10,7 @@
 #endif
 
 #include "SketcherDoc.h"
-
+#include "PenDialog.h"
 #include <propkey.h>
 
 #ifdef _DEBUG
@@ -39,6 +39,7 @@ BEGIN_MESSAGE_MAP(CSketcherDoc, CDocument)
 	ON_UPDATE_COMMAND_UI(ID_ELEMENT_CURVE, &CSketcherDoc::OnUpdateElementCurve)
 	ON_COMMAND(ID_ELEMENT_TEXT, &CSketcherDoc::OnElementText)
 	ON_UPDATE_COMMAND_UI(ID_ELEMENT_TEXT, &CSketcherDoc::OnUpdateElementText)
+	ON_COMMAND(ID_PEN_WIDTH, &CSketcherDoc::OnPenWidth)
 END_MESSAGE_MAP()
 
 
@@ -273,4 +274,12 @@ void CSketcherDoc::OnUpdateElementText(CCmdUI *pCmdUI)
 {
 	// TODO: Add your command update UI handler code here
 	pCmdUI->SetCheck(m_Element == ElementType::TEXT);
+}
+
+
+void CSketcherDoc::OnPenWidth()
+{
+	// TODO: 在此添加命令处理程序代码
+	CPenDialog aDlg;
+	aDlg.DoModal();
 }

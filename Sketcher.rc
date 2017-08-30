@@ -17,7 +17,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (Simplified, PRC) resources
+// 中文(简体，中国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
@@ -33,9 +33,25 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSM
 CAPTION "Enter Text"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,79,111,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,163,109,50,14
-    EDITTEXT        IDC_EDIT_TEXT,101,41,87,64,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,73,96,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,159,96,50,14
+    EDITTEXT        IDC_EDIT_TEXT,84,28,113,58,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+END
+
+IDD_PENWIDTH_DLG DIALOGEX 0, 0, 309, 177
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Set Pen Width"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,215,45,50,14
+    PUSHBUTTON      "取消",IDCANCEL,216,94,50,14
+    CONTROL         "1 Pixel",IDC_PENWIDTH0,"Button",BS_AUTORADIOBUTTON,47,30,71,25
+    CONTROL         "0.02 inches",IDC_PENWIDTH2,"Button",BS_AUTORADIOBUTTON,47,84,71,25
+    CONTROL         "0.01 inches",IDC_PENWIDTH1,"Button",BS_AUTORADIOBUTTON,47,60,71,25
+    CONTROL         "0.03 inches",IDC_PENWIDTH3,"Button",BS_AUTORADIOBUTTON,135,34,71,25
+    CONTROL         "0.05 inches",IDC_PENWIDTH5,"Button",BS_AUTORADIOBUTTON,135,88,71,25
+    CONTROL         "0.04 inches",IDC_PENWIDTH4,"Button",BS_AUTORADIOBUTTON,135,64,71,25
+    GROUPBOX        "Pen Widths",IDC_STATIC,20,25,180,106
 END
 
 
@@ -54,6 +70,14 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 125
     END
+
+    IDD_PENWIDTH_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 170
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -64,6 +88,11 @@ END
 //
 
 IDD_TEXT_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_PENWIDTH_DLG AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
@@ -97,12 +126,12 @@ BEGIN
     END
 END
 
-#endif    // Chinese (Simplified, PRC) resources
+#endif    // 中文(简体，中国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
+// 英语(美国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -142,6 +171,93 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About Sketcher...",          ID_APP_ABOUT
+    END
+END
+
+IDR_SketchTYPE MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "E&lement"
+    BEGIN
+        MENUITEM "&Line",                       ID_ELEMENT_LINE
+        MENUITEM "Rectangle",                   ID_ELEMENT_RECTANGLE
+        MENUITEM "Circle",                      ID_ELEMENT_CIRCLE
+        MENUITEM "Curve",                       ID_ELEMENT_CURVE
+        MENUITEM "Ellipse",                     ID_ELEMENT_ELLIPSE
+        MENUITEM "Text",                        ID_ELEMENT_TEXT
+    END
+    POPUP "&Pen"
+    BEGIN
+        MENUITEM "&Black",                      ID_COLOR_BLACK
+        MENUITEM "Red",                         ID_COLOR_RED
+        MENUITEM "Green",                       ID_COLOR_GREEN
+        MENUITEM "Blue",                        ID_COLOR_BLUE
+        MENUITEM SEPARATOR
+        MENUITEM "Width",                       ID_PEN_WIDTH
+    END
+    MENUITEM "&Window",                     ID_WINDOW
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About Sketcher...",          ID_APP_ABOUT
+    END
+END
 
 
 #ifdef APSTUDIO_INVOKED
@@ -229,93 +345,8 @@ BEGIN
     BUTTON      ID_COLOR_RED
     BUTTON      ID_COLOR_GREEN
     BUTTON      ID_COLOR_BLUE
-    BUTTON      ID_BUTTON32789
+    BUTTON      ID_PEN_WIDTH
     BUTTON      ID_BUTTON32793
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Menu
-//
-
-IDR_MAINFRAME MENU
-BEGIN
-    POPUP "&File"
-    BEGIN
-        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
-        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
-        MENUITEM "&Close",                      ID_FILE_CLOSE
-        MENUITEM SEPARATOR
-        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
-        MENUITEM SEPARATOR
-        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
-        MENUITEM SEPARATOR
-        MENUITEM "E&xit",                       ID_APP_EXIT
-    END
-    POPUP "&View"
-    BEGIN
-        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
-        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
-    END
-    POPUP "&Help"
-    BEGIN
-        MENUITEM "&About Sketcher...",          ID_APP_ABOUT
-    END
-END
-
-IDR_SketchTYPE MENU
-BEGIN
-    POPUP "&File"
-    BEGIN
-        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
-        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
-        MENUITEM "&Close",                      ID_FILE_CLOSE
-        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
-        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
-        MENUITEM SEPARATOR
-        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
-        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
-        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
-        MENUITEM SEPARATOR
-        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1
-        MENUITEM SEPARATOR
-        MENUITEM "E&xit",                       ID_APP_EXIT
-    END
-    POPUP "&Edit"
-    BEGIN
-        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
-        MENUITEM SEPARATOR
-        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
-        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
-        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
-    END
-    POPUP "&View"
-    BEGIN
-        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
-        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
-    END
-    POPUP "E&lement"
-    BEGIN
-        MENUITEM "&Line",                       ID_ELEMENT_LINE
-        MENUITEM "Rectangle",                   ID_ELEMENT_RECTANGLE
-        MENUITEM "Circle",                      ID_ELEMENT_CIRCLE
-        MENUITEM "Curve",                       ID_ELEMENT_CURVE
-        MENUITEM "Ellipse",                     ID_ELEMENT_ELLIPSE
-        MENUITEM "Text",                        ID_ELEMENT_TEXT
-    END
-    POPUP "&Color"
-    BEGIN
-        MENUITEM "&Black",                      ID_COLOR_BLACK
-        MENUITEM "Red",                         ID_COLOR_RED
-        MENUITEM "Green",                       ID_COLOR_GREEN
-        MENUITEM "Blue",                        ID_COLOR_BLUE
-    END
-    MENUITEM "&Window",                     ID_WINDOW
-    POPUP "&Help"
-    BEGIN
-        MENUITEM "&About Sketcher...",          ID_APP_ABOUT
-    END
 END
 
 
@@ -523,9 +554,10 @@ END
 STRINGTABLE
 BEGIN
     ID_ELEMENT_TEXT         "Create text \n Text"
+    ID_PEN_WIDTH            "Change Pen Width \nShow pen width opitions"
 END
 
-#endif    // English (United States) resources
+#endif    // 英语(美国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

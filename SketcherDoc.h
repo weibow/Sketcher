@@ -101,4 +101,5 @@ public:
 	SketchIterator end()  const { return std::end(m_Sketch); }
 	afx_msg void OnElementText();
 	afx_msg void OnUpdateElementText(CCmdUI *pCmdUI);
+	afx_msg void OnPenWidth();
 };
