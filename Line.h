@@ -9,7 +9,7 @@ public:
 	virtual void Draw(CDC* pDC, std::shared_ptr<CElement> pElement = nullptr) override; //Function to display a line
 	
 	//Constructor for a line object
-	CLine(const CPoint& start, const CPoint& end, COLORREF color);
+	CLine(const CPoint& start, const CPoint& end, COLORREF color, int penWidth);
 protected:
 	CPoint m_EndPoint;
 protected:

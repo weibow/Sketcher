@@ -281,5 +281,9 @@ void CSketcherDoc::OnPenWidth()
 {
 	// TODO: 在此添加命令处理程序代码
 	CPenDialog aDlg;
-	aDlg.DoModal();
+	
+	aDlg.m_PenWidth = m_PenWidth;
+	
+	if (aDlg.DoModal() == IDOK)
+		m_PenWidth = aDlg.m_PenWidth;
 }

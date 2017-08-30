@@ -226,6 +226,8 @@ std::shared_ptr<CElement> CSketcherView::CreateElement() const
 
 	COLORREF color{ static_cast<COLORREF>(pDoc->GetElementColor()) };
 
+	int penWidth{ pDoc->GetPenWidth() };
+
 	switch (pDoc->GetElementType())
 	{
 	case ElementType::CURVE:
@@ -235,7 +237,7 @@ std::shared_ptr<CElement> CSketcherView::CreateElement() const
 	case ElementType::RECTANGLE:
 		return std::make_shared<CRectangle>(m_FirstPoint, m_SecondPoint, color);
 	case ElementType::LINE:		
-		return std::make_shared<CLine>(m_FirstPoint, m_SecondPoint, color);
+		return std::make_shared<CLine>(m_FirstPoint, m_SecondPoint, color, penWidth);
 	default:
 		AfxMessageBox(_T("Bad Element code"), MB_OK);
 		AfxAbort();

@@ -24,4 +24,10 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL OnInitDialog();
+	afx_msg void OnBnClickedPenwidth0();
+	afx_msg void OnBnClickedPenwidth1();
+	afx_msg void OnBnClickedPenwidth2();
+	afx_msg void OnBnClickedPenwidth3();
+	afx_msg void OnBnClickedPenwidth4();
+	afx_msg void OnBnClickedPenwidth5();
 };

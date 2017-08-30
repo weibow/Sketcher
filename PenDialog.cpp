@@ -28,6 +28,12 @@ void CPenDialog::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CPenDialog, CDialogEx)
+	ON_BN_CLICKED(IDC_PENWIDTH0, &CPenDialog::OnBnClickedPenwidth0)
+	ON_BN_CLICKED(IDC_PENWIDTH1, &CPenDialog::OnBnClickedPenwidth1)
+	ON_BN_CLICKED(IDC_PENWIDTH2, &CPenDialog::OnBnClickedPenwidth2)
+	ON_BN_CLICKED(IDC_PENWIDTH3, &CPenDialog::OnBnClickedPenwidth3)
+	ON_BN_CLICKED(IDC_PENWIDTH4, &CPenDialog::OnBnClickedPenwidth4)
+	ON_BN_CLICKED(IDC_PENWIDTH5, &CPenDialog::OnBnClickedPenwidth5)
 END_MESSAGE_MAP()
 
 
@@ -63,4 +69,46 @@ BOOL CPenDialog::OnInitDialog()
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
+}
+
+
+void CPenDialog::OnBnClickedPenwidth0()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_PenWidth = 0;
+}
+
+
+void CPenDialog::OnBnClickedPenwidth1()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_PenWidth = 1;
+}
+
+
+void CPenDialog::OnBnClickedPenwidth2()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_PenWidth = 2;
+}
+
+
+void CPenDialog::OnBnClickedPenwidth3()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_PenWidth = 3;
+}
+
+
+void CPenDialog::OnBnClickedPenwidth4()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_PenWidth = 4;
+}
+
+
+void CPenDialog::OnBnClickedPenwidth5()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_PenWidth = 5;
 }

@@ -1,6 +1,5 @@
-﻿  PenDialog.cpp
+﻿  SketcherView.cpp
+  Line.cpp
   正在生成代码...
-  正在跳过...(未检测到相关更改)
-  SketcherDoc.cpp
   Sketcher.vcxproj -> D:\git_repository\sketcher\Sketcher\Debug\Sketcher.exe
   Sketcher.vcxproj -> D:\git_repository\sketcher\Sketcher\Debug\Sketcher.pdb (Partial PDB)

@@ -102,4 +102,7 @@ public:
 	afx_msg void OnElementText();
 	afx_msg void OnUpdateElementText(CCmdUI *pCmdUI);
 	afx_msg void OnPenWidth();
+	int GetPenWidth() const { return m_PenWidth; }
+protected:
+	int m_PenWidth;		//Record the current pen width
 };

@@ -12,13 +12,14 @@ CLine::~CLine()
 }
 
 //CLine class constructor
-CLine::CLine(const CPoint& start, const CPoint& end, COLORREF color) :
+CLine::CLine(const CPoint& start, const CPoint& end, COLORREF color, int penWidth) :
 	CElement{ start, color }, m_EndPoint{ end }
 {
 	//Define the enclosing rectangle
 	m_EnclosingRect = CRect{ start, end };
 	m_EnclosingRect.NormalizeRect();
-	m_EnclosingRect.InflateRect(m_PenWidth, m_PenWidth);
+	int width{ penWidth == 0 ? 1 : penWidth };
+	m_EnclosingRect.InflateRect(width, width);
 }
 
 void CLine::Draw(CDC* pDC, std::shared_ptr<CElement> pElement)
