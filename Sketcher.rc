@@ -54,6 +54,18 @@ BEGIN
     GROUPBOX        "Pen Widths",IDC_STATIC,20,25,180,106
 END
 
+IDD_SPIN_DLG DIALOGEX 0, 0, 269, 127
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,70,82,50,14
+    PUSHBUTTON      "取消",IDCANCEL,144,82,50,14
+    EDITTEXT        IDC_SCALE,115,38,64,28,ES_CENTER | ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_SCALE,"msctls_updown32",UDS_SETBUDDYINT | UDS_AUTOBUDDY | UDS_ARROWKEYS,192,37,20,31
+    RTEXT           "View Scale:",IDC_STATIC,59,48,44,9
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -78,6 +90,14 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 170
     END
+
+    IDD_SPIN_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 262
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 120
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -93,6 +113,11 @@ BEGIN
 END
 
 IDD_PENWIDTH_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SPIN_DLG AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
@@ -233,6 +258,8 @@ BEGIN
     BEGIN
         MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
         MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "S&cale",                      ID_VIEW_SCALE
     END
     POPUP "E&lement"
     BEGIN
@@ -555,6 +582,11 @@ STRINGTABLE
 BEGIN
     ID_ELEMENT_TEXT         "Create text \n Text"
     ID_PEN_WIDTH            "Change Pen Width \nShow pen width opitions"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_SCALE      "View Scale : 1"
 END
 
 #endif    // 英语(美国) resources

@@ -39,6 +39,7 @@ BEGIN_MESSAGE_MAP(CSketcherView, CScrollView)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_CONTEXTMENU()
 	ON_COMMAND(ID_VIEW_SCALE, &CSketcherView::OnViewScale)
+	ON_UPDATE_COMMAND_UI(ID_INDICATOR_SCALE, &CSketcherView::OnUpdateIndicatorScale)
 END_MESSAGE_MAP()
 
 // CSketcherView construction/destruction
@@ -340,4 +341,14 @@ void CSketcherView::OnViewScale()
 		m_Scale = aDlg.m_Scale;
 		InvalidateRect(nullptr);
 	}
+}
+
+
+void CSketcherView::OnUpdateIndicatorScale(CCmdUI *pCmdUI)
+{
+	// TODO: 在此添加命令更新用户界面处理程序代码
+	pCmdUI->Enable();
+	CString scaleStr;
+	scaleStr.Format(_T(" View Scale : %d"), m_Scale);
+	pCmdUI->SetText(scaleStr);
 }

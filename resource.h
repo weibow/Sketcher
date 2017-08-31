@@ -2,13 +2,13 @@
 // Microsoft Visual C++ 生成的包含文件。
 // 供 Sketcher.rc 使用
 //
+#define ID_INDICATOR_SCALE              1
 #define IDD_SPIN_DLG                    2
 #define IDD_TEXT_DLG                    9
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
 #define IDR_SketchTYPE                  130
 #define ID_WINDOW_MANAGER               131
-#define IDR_MENU1                       311
 #define IDR_CONTEXT_MENU                311
 #define IDD_PENWIDTH_DLG                316
 #define IDC_EDIT_TEXT                   1000
@@ -16,7 +16,6 @@
 #define IDC_PENWIDTH2                   1002
 #define IDC_SPIN_SCALE                  1002
 #define IDC_PENWIDTH1                   1003
-#define IDC_EDIT1                       1003
 #define IDC_SCALE                       1003
 #define IDC_PENWIDTH3                   1004
 #define IDC_PENWIDTH5                   1005

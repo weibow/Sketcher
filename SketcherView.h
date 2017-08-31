@@ -65,6 +65,8 @@ public:
 	afx_msg void OnViewScale();
 protected:
 	int m_Scale{ 1 };
+public:
+	afx_msg void OnUpdateIndicatorScale(CCmdUI *pCmdUI);
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp
