@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Exclude FileFolder
+Debug/
+.vs/
+sketcher_si.si4project/
+
+*.orig
+
