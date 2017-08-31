@@ -2,6 +2,7 @@
 // Microsoft Visual C++ 生成的包含文件。
 // 供 Sketcher.rc 使用
 //
+#define IDD_SPIN_DLG                    2
 #define IDD_TEXT_DLG                    9
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
@@ -13,7 +14,10 @@
 #define IDC_EDIT_TEXT                   1000
 #define IDC_PENWIDTH0                   1001
 #define IDC_PENWIDTH2                   1002
+#define IDC_SPIN_SCALE                  1002
 #define IDC_PENWIDTH1                   1003
+#define IDC_EDIT1                       1003
+#define IDC_SCALE                       1003
 #define IDC_PENWIDTH3                   1004
 #define IDC_PENWIDTH5                   1005
 #define IDC_PENWIDTH4                   1006
@@ -36,14 +40,15 @@
 #define ID_ELEMENT_MOVE32795            32795
 #define ID_ELEMENT_DELETE32796          32796
 #define ID_PEN_WIDTH                    32798
+#define ID_VIEW_SCALE                   32799
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        318
-#define _APS_NEXT_COMMAND_VALUE         32799
-#define _APS_NEXT_CONTROL_VALUE         1002
+#define _APS_NEXT_RESOURCE_VALUE        320
+#define _APS_NEXT_COMMAND_VALUE         32800
+#define _APS_NEXT_CONTROL_VALUE         1004
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

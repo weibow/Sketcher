@@ -17,6 +17,7 @@
 #include "Circle.h"
 #include "Text.h"
 #include "TextDialog.h"
+#include "ScaleDialog.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -37,6 +38,7 @@ BEGIN_MESSAGE_MAP(CSketcherView, CScrollView)
 	ON_WM_MOUSEMOVE()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_CONTEXTMENU()
+	ON_COMMAND(ID_VIEW_SCALE, &CSketcherView::OnViewScale)
 END_MESSAGE_MAP()
 
 // CSketcherView construction/destruction
@@ -323,5 +325,19 @@ void CSketcherView::OnElementDelete()
 	{
 		GetDocument()->DeleteElement(m_pSelected);
 		m_pSelected.reset();
+	}
+}
+
+
+void CSketcherView::OnViewScale()
+{
+	// TODO: 在此添加命令处理程序代码
+	CScaleDialog aDlg;
+	
+	aDlg.m_Scale = m_Scale;
+	if (aDlg.DoModal() == IDOK)
+	{
+		m_Scale = aDlg.m_Scale;
+		InvalidateRect(nullptr);
 	}
 }

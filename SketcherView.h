@@ -62,6 +62,9 @@ protected:
 public:
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 	void OnElementDelete();
+	afx_msg void OnViewScale();
+protected:
+	int m_Scale{ 1 };
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp
