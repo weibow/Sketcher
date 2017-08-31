@@ -12,14 +12,16 @@ CCurve::~CCurve()
 {
 }
 
-CCurve::CCurve(const CPoint& first, const CPoint& second, COLORREF color) :
-	CElement{ first, color }
+CCurve::CCurve(const CPoint& first, const CPoint& second, COLORREF color, int penWidth) :
+	CElement{ first, color, penWidth}
 {
 	m_Points.push_back(second);
 	m_EnclosingRect = CRect{
 		(std::min)(first.x, second.x), (std::min)(first.y, second.y),
 		(std::max)(first.y, second.x), (std::max)(first.y, second.y) };
-	m_EnclosingRect.InflateRect(m_PenWidth, m_PenWidth);
+
+	int width{ penWidth == 0 ? 1 : penWidth };
+	m_EnclosingRect.InflateRect(width, width);
 }
 		
 
@@ -41,11 +43,13 @@ void CCurve::AddSegment(const CPoint& point)
 {
 	m_Points.push_back(point);
 
-	m_EnclosingRect.DeflateRect(m_PenWidth, m_PenWidth);
+	int width{ m_PenWidth == 0 ? 1 : m_PenWidth };
+
+	m_EnclosingRect.DeflateRect(width, width);
 	m_EnclosingRect = CRect{ (std::min)(point.x, m_EnclosingRect.left),
 		(std::min)(point.y, m_EnclosingRect.top),
 		(std::max)(point.x, m_EnclosingRect.right),
 		(std::max)(point.y, m_EnclosingRect.bottom) };
-	m_EnclosingRect.InflateRect(m_PenWidth, m_PenWidth);
+	m_EnclosingRect.InflateRect(width, width);
 
 }

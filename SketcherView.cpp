@@ -231,11 +231,11 @@ std::shared_ptr<CElement> CSketcherView::CreateElement() const
 	switch (pDoc->GetElementType())
 	{
 	case ElementType::CURVE:
-		return std::make_shared<CCurve>(m_FirstPoint, m_SecondPoint, color);
+		return std::make_shared<CCurve>(m_FirstPoint, m_SecondPoint, color, penWidth);
 	case ElementType::CIRCLE:
-		return std::make_shared<CCircle>(m_FirstPoint, m_SecondPoint, color);		
+		return std::make_shared<CCircle>(m_FirstPoint, m_SecondPoint, color, penWidth);		
 	case ElementType::RECTANGLE:
-		return std::make_shared<CRectangle>(m_FirstPoint, m_SecondPoint, color);
+		return std::make_shared<CRectangle>(m_FirstPoint, m_SecondPoint, color, penWidth);
 	case ElementType::LINE:		
 		return std::make_shared<CLine>(m_FirstPoint, m_SecondPoint, color, penWidth);
 	default:

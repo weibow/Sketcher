@@ -31,6 +31,7 @@ public:
 public:
 	virtual BOOL OnNewDocument();
 	virtual void Serialize(CArchive& ar);
+
 #ifdef SHARED_HANDLERS
 	virtual void InitializeSearchContent();
 	virtual void OnDrawThumbnail(CDC& dc, LPRECT lprcBounds);
@@ -104,5 +105,5 @@ public:
 	afx_msg void OnPenWidth();
 	int GetPenWidth() const { return m_PenWidth; }
 protected:
-	int m_PenWidth;		//Record the current pen width
+	int m_PenWidth{};		//Record the current pen width
 };

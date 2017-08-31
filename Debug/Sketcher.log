@@ -1,5 +1,6 @@
-﻿  SketcherView.cpp
-  Line.cpp
+﻿  Rectangle.cpp
+  Curve.cpp
+  Circle.cpp
   正在生成代码...
   Sketcher.vcxproj -> D:\git_repository\sketcher\Sketcher\Debug\Sketcher.exe
   Sketcher.vcxproj -> D:\git_repository\sketcher\Sketcher\Debug\Sketcher.pdb (Partial PDB)

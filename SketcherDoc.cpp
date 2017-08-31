@@ -176,7 +176,6 @@ void CSketcherDoc::OnElementLine()
 	m_Element = ElementType::LINE;// TODO: Add your command handler code here
 }
 
-
 void CSketcherDoc::OnElementRectangle()
 {
 	// TODO: Add your command handler code here
