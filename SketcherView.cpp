@@ -212,6 +212,7 @@ void CSketcherView::OnLButtonDown(UINT nFlags, CPoint point)
 					static_cast<COLORREF>(pDoc->GetElementColor()))};
 			pDoc->AddElement(pTextElement);
 			pDoc->UpdateAllViews(nullptr, 0, pTextElement.get());
+			pDoc->SetModifiedFlag();			//Set the modified flag
 		}
 	}
 	else

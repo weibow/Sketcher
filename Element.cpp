@@ -5,7 +5,12 @@
 #include "Sketcher.h"
 #include "Element.h"
 
+IMPLEMENT_SERIAL(CElement, CObject, VERSION_NUMBER)
 
+// CElement
+CElement::CElement()
+{
+}
 
 
 CElement::CElement(const CPoint& start, COLORREF color, int penWidth) :
@@ -24,11 +29,6 @@ void CElement::CreatePen(CPen& aPen, std::shared_ptr<CElement> pElement)
 
 
 
-// CElement
-
-CElement::CElement()
-{
-}
 
 CElement::~CElement()
 {
@@ -36,3 +36,26 @@ CElement::~CElement()
 
 
 // CElement member functions
+
+
+
+
+void CElement::Serialize(CArchive& ar)
+{
+	CObject::Serialize(ar);
+
+	if (ar.IsStoring())
+	{	// storing code
+		ar << m_StartPoint
+			<< m_PenWidth
+			<< m_Color
+			<< m_EnclosingRect;
+	}
+	else
+	{	// loading code
+		ar >> m_StartPoint
+			>> m_PenWidth
+			>> m_Color
+			>> m_EnclosingRect;
+	}
+}

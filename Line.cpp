@@ -37,3 +37,17 @@ void CLine::Draw(CDC* pDC, std::shared_ptr<CElement> pElement)
 
 	pDC->SelectObject(pOldPen);
 }
+
+void CLine::Serialize(CArchive& ar)
+{
+	CElement::Serialize(ar);
+
+	if (ar.IsStoring())
+	{	// storing code'
+		ar << m_EndPoint;
+	}
+	else
+	{	// loading code
+		ar >> m_EndPoint;
+	}
+}

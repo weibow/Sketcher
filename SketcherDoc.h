@@ -58,14 +58,16 @@ public:
 	{
 		m_Sketch.push_back(pElement);
 		UpdateAllViews(nullptr, 0, pElement.get());
+		SetModifiedFlag();
 	}
 	void DeleteElement(std::shared_ptr<CElement>& pElement)
 	{
 		m_Sketch.remove(pElement);
 		UpdateAllViews(nullptr, 0, pElement.get());
+		SetModifiedFlag();
 	}
 protected:
-	std::list <std::shared_ptr<CElement>> m_Sketch;
+	//std::list <std::shared_ptr<CElement>> m_Sketch;
 
 // Generated message map functions
 protected:
@@ -75,8 +77,11 @@ protected:
 	// Helper function that sets search content for a Search Handler
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
-ElementType m_Element {ElementType::LINE };		//Current element type
-ElementColor m_Color{ ElementColor::BLACK };	//Current drawing color
+	ElementType m_Element {ElementType::LINE };		//Current element type
+	ElementColor m_Color{ ElementColor::BLACK };	//Current drawing color
+	std::list<std::shared_ptr<CElement>> m_Sketch;	//A list containing the sketch
+	int m_PenWidth{};		//Record the current pen width
+	CSize m_DocSize{ CSize{3000, 3000} };
 public:
 	afx_msg void OnColorBlack();
 	afx_msg void OnColorRed();
@@ -104,6 +109,5 @@ public:
 	afx_msg void OnUpdateElementText(CCmdUI *pCmdUI);
 	afx_msg void OnPenWidth();
 	int GetPenWidth() const { return m_PenWidth; }
-protected:
-	int m_PenWidth{};		//Record the current pen width
+
 };

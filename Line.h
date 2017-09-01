@@ -15,5 +15,7 @@ protected:
 protected:
 	CLine();
 	//void Draw(CDC* pDC);
+public:
+	virtual void Serialize(CArchive& ar) override;
 };
 

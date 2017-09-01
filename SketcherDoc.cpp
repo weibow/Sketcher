@@ -76,10 +76,37 @@ void CSketcherDoc::Serialize(CArchive& ar)
 	if (ar.IsStoring())
 	{
 		// TODO: add storing code here
+		ar << static_cast<COLORREF>(m_Color)
+			<< static_cast<int>(m_Element)
+			<< m_PenWidth
+			<< m_DocSize;
+		ar << m_Sketch.size();		//Store the number of element in the list
+		
+		for (const auto &pElement : m_Sketch)
+			ar << pElement.get();
 	}
 	else
 	{
 		// TODO: add loading code here
+
+		COLORREF color{};
+		int elementType{};
+		ar >> color				//Retrieve the current color
+			>> elementType		//the element type as an integer
+			>> m_PenWidth		//and the current pen width
+			>> m_DocSize;		//and the current document size
+		m_Color = static_cast<ElementColor>(color);
+		m_Element = static_cast<ElementType>(elementType);
+
+		//Now retrieve all the elements and store in the list
+		size_t elementCount{};
+		ar >> elementCount;
+		CElement* pElement;
+		for (size_t i{}; i < elementCount; ++i)
+		{
+			ar >> pElement;
+			m_Sketch.push_back(std::shared_ptr<CElement>(pElement));
+		}
 	}
 }
 
@@ -164,28 +191,33 @@ void CSketcherDoc::OnColorBlack()
 void CSketcherDoc::OnColorRed()
 {
 	m_Color = ElementColor::RED; // TODO: Add your command handler code here
+	SetModifiedFlag();
 }
 
 void CSketcherDoc::OnColorGreen()
 {
 	m_Color = ElementColor::GREEN;// TODO: Add your command handler code here
+	SetModifiedFlag();
 }
 
 void CSketcherDoc::OnElementLine()
 {
 	m_Element = ElementType::LINE;// TODO: Add your command handler code here
+	SetModifiedFlag();
 }
 
 void CSketcherDoc::OnElementRectangle()
 {
 	// TODO: Add your command handler code here
 	m_Element = ElementType::RECTANGLE;
+	SetModifiedFlag();
 }
 
 void CSketcherDoc::OnElementCircle()
 {
 	// TODO: Add your command handler code here
 	m_Element = ElementType::CIRCLE;
+	SetModifiedFlag();
 }
 
 void CSketcherDoc::OnUpdateColorBlack(CCmdUI *pCmdUI)
@@ -284,5 +316,8 @@ void CSketcherDoc::OnPenWidth()
 	aDlg.m_PenWidth = m_PenWidth;
 	
 	if (aDlg.DoModal() == IDOK)
+	{
 		m_PenWidth = aDlg.m_PenWidth;
+		SetModifiedFlag();
+	}
 }
