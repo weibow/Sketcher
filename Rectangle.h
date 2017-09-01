@@ -3,6 +3,7 @@
 class CRectangle :
 	public CElement
 {
+DECLARE_SERIAL(CRectangle)
 public:
 	//CRectangle();
 	virtual ~CRectangle();
@@ -12,5 +13,7 @@ protected:
 	CPoint m_BottomRight;	//Bottom-right point for the rectangle
 	CRectangle();
 
+public:
+	virtual void Serialize(CArchive& ar) override;
 };
 

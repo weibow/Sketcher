@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Circle.h"
 
+IMPLEMENT_SERIAL(CCircle, CElement, VERSION_NUMBER)
 
 CCircle::CCircle()
 {
@@ -43,4 +44,17 @@ void CCircle::Draw(CDC* pDC, std::shared_ptr<CElement> pElement)
 	pDC->SelectObject(pOldPen);
 	pDC->SelectObject(pOldBrush);
 
+}
+
+void CCircle::Serialize(CArchive& ar)
+{
+	CElement::Serialize(ar);
+	if (ar.IsStoring())
+	{	// storing code
+		ar <<  m_BottomRight;
+	}
+	else
+	{	// loading code
+		ar >> m_BottomRight;
+	}
 }

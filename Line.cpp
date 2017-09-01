@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "Line.h"
 
+IMPLEMENT_SERIAL(CLine, CElement, VERSION_NUMBER)
 
 CLine::CLine()
 {
@@ -19,7 +20,6 @@ CElement { start, color, penWidth }, m_EndPoint { end }
 	m_EnclosingRect = CRect { start, end };
 	m_EnclosingRect.NormalizeRect();
 	int width{ penWidth == 0 ? 1 : penWidth };
-	width = 6;
 	m_EnclosingRect.InflateRect(width, width);
 }
 

@@ -4,6 +4,7 @@
 class CCurve :
 	public CElement
 {
+DECLARE_SERIAL(CCurve)
 public:
 	CCurve(const CPoint& first, const CPoint& second, COLORREF color, int penWidth);
 	virtual ~CCurve();
@@ -12,5 +13,7 @@ public:
 protected:
 	std::vector<CPoint> m_Points;
 	CCurve();
+public:
+	virtual void Serialize(CArchive& ar) override;
 };
 

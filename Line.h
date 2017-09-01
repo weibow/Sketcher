@@ -3,6 +3,7 @@
 class CLine :
 	public CElement
 {
+DECLARE_SERIAL(CLine)
 public:
 	//CLine();
 	virtual ~CLine();

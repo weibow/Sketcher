@@ -185,6 +185,7 @@ void CSketcherDoc::Dump(CDumpContext& dc) const
 void CSketcherDoc::OnColorBlack()
 {
 	m_Color = ElementColor::BLACK;	//Set the drawing color to black// TODO: Add your command handler code here
+	SetModifiedFlag();
 }
 
 
@@ -200,6 +201,12 @@ void CSketcherDoc::OnColorGreen()
 	SetModifiedFlag();
 }
 
+void CSketcherDoc::OnColorBlue()
+{
+	// TODO: Add your command handler code here
+	m_Color = ElementColor::BLUE;
+	SetModifiedFlag();
+}
 void CSketcherDoc::OnElementLine()
 {
 	m_Element = ElementType::LINE;// TODO: Add your command handler code here
@@ -220,6 +227,14 @@ void CSketcherDoc::OnElementCircle()
 	SetModifiedFlag();
 }
 
+void CSketcherDoc::OnElementCurve()
+{
+	// TODO: Add your command handler code here
+	m_Element = ElementType::CURVE;
+	SetModifiedFlag();
+}
+
+
 void CSketcherDoc::OnUpdateColorBlack(CCmdUI *pCmdUI)
 {
 	// TODO: Add your command update UI handler code here
@@ -227,11 +242,7 @@ void CSketcherDoc::OnUpdateColorBlack(CCmdUI *pCmdUI)
 }
 
 
-void CSketcherDoc::OnUpdateElementLine(CCmdUI *pCmdUI)
-{
-	// TODO: Add your command update UI handler code here
-	pCmdUI->SetCheck(m_Element == ElementType::LINE);
-}
+
 
 void CSketcherDoc::OnUpdateColorRed(CCmdUI *pCmdUI)
 {
@@ -252,12 +263,10 @@ void CSketcherDoc::OnUpdateElementCircle(CCmdUI *pCmdUI)
 	// TODO: Add your command update UI handler code here
 	pCmdUI->SetCheck(m_Element == ElementType::CIRCLE);
 }
-
-
-void CSketcherDoc::OnColorBlue()
+void CSketcherDoc::OnUpdateElementLine(CCmdUI *pCmdUI)
 {
-	// TODO: Add your command handler code here
-	m_Color = ElementColor::BLUE;
+	// TODO: Add your command update UI handler code here
+	pCmdUI->SetCheck(m_Element == ElementType::LINE);
 }
 
 
@@ -268,11 +277,6 @@ void CSketcherDoc::OnUpdateColorBlue(CCmdUI *pCmdUI)
 }
 
 
-void CSketcherDoc::OnElementCurve()
-{
-	// TODO: Add your command handler code here
-	m_Element = ElementType::CURVE;
-}
 
 
 void CSketcherDoc::OnUpdateElementCurve(CCmdUI *pCmdUI)
@@ -281,6 +285,21 @@ void CSketcherDoc::OnUpdateElementCurve(CCmdUI *pCmdUI)
 	pCmdUI->SetCheck(m_Element == ElementType::CURVE);
 }
 
+
+
+void CSketcherDoc::OnPenWidth()
+{
+	// TODO: 在此添加命令处理程序代码
+	CPenDialog aDlg;
+	
+	aDlg.m_PenWidth = m_PenWidth;
+	
+	if (aDlg.DoModal() == IDOK)
+	{
+		m_PenWidth = aDlg.m_PenWidth;
+		SetModifiedFlag();
+	}
+}
 
 ElementType CSketcherDoc::GetElementType() const
 {
@@ -298,6 +317,7 @@ void CSketcherDoc::OnElementText()
 {
 	// TODO: Add your command handler code here
 	m_Element = ElementType::TEXT;
+	SetModifiedFlag();
 }
 
 
@@ -308,16 +328,4 @@ void CSketcherDoc::OnUpdateElementText(CCmdUI *pCmdUI)
 }
 
 
-void CSketcherDoc::OnPenWidth()
-{
-	// TODO: 在此添加命令处理程序代码
-	CPenDialog aDlg;
-	
-	aDlg.m_PenWidth = m_PenWidth;
-	
-	if (aDlg.DoModal() == IDOK)
-	{
-		m_PenWidth = aDlg.m_PenWidth;
-		SetModifiedFlag();
-	}
-}
+

@@ -2,6 +2,8 @@
 #include "Rectangle.h"
 #include "algorithm"
 
+IMPLEMENT_SERIAL(CRectangle, CElement, VERSION_NUMBER)
+
 CRectangle::CRectangle()
 {
 }
@@ -50,4 +52,17 @@ void CRectangle::Draw(CDC* pDC, std::shared_ptr<CElement> pElement)
 	pDC->SelectObject(pOldPen);
 
 
+}
+
+void CRectangle::Serialize(CArchive& ar)
+{
+	CElement::Serialize(ar);
+	if (ar.IsStoring())
+	{	// storing code
+		ar << m_BottomRight;
+	}
+	else
+	{	// loading code
+		ar >> m_BottomRight;
+	}
 }

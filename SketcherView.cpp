@@ -144,6 +144,36 @@ void CSketcherView::OnLButtonUp(UINT nFlags, CPoint point)
 	}
 }
 
+void CSketcherView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+	CClientDC aDC{ this };
+	OnPrepareDC(&aDC);
+	aDC.DPtoLP(&point);
+	CSketcherDoc* pDoc{ GetDocument() };
+
+	if (pDoc->GetElementType() == ElementType::TEXT)
+	{
+		CTextDialog aDlg;
+		if (aDlg.DoModal() == IDOK)
+		{
+			CSize textExtent {aDC.GetOutputTextExtent(aDlg.m_TextString)};
+			textExtent.cx *= 1;
+			textExtent.cy *= 1;
+			std::shared_ptr<CElement> pTextElement
+				{std::make_shared<CText>(point, point + textExtent, aDlg.m_TextString,
+					static_cast<COLORREF>(pDoc->GetElementColor()))};
+			pDoc->AddElement(pTextElement);
+			pDoc->UpdateAllViews(nullptr, 0, pTextElement.get());
+		//	pDoc->SetModifiedFlag();			//Set the modified flag
+		}
+	}
+	else
+	{
+		m_FirstPoint = point;
+		SetCapture();
+	}
+}
 
 void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 {
@@ -191,36 +221,7 @@ void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 }
 
 
-void CSketcherView::OnLButtonDown(UINT nFlags, CPoint point)
-{
-	// TODO: Add your message handler code here and/or call default
-	CClientDC aDC{ this };
-	OnPrepareDC(&aDC);
-	aDC.DPtoLP(&point);
-	CSketcherDoc* pDoc{ GetDocument() };
 
-	if (pDoc->GetElementType() == ElementType::TEXT)
-	{
-		CTextDialog aDlg;
-		if (aDlg.DoModal() == IDOK)
-		{
-			CSize textExtent {aDC.GetOutputTextExtent(aDlg.m_TextString)};
-			textExtent.cx *= 1;
-			textExtent.cy *= 1;
-			std::shared_ptr<CElement> pTextElement
-				{std::make_shared<CText>(point, point + textExtent, aDlg.m_TextString,
-					static_cast<COLORREF>(pDoc->GetElementColor()))};
-			pDoc->AddElement(pTextElement);
-			pDoc->UpdateAllViews(nullptr, 0, pTextElement.get());
-			pDoc->SetModifiedFlag();			//Set the modified flag
-		}
-	}
-	else
-	{
-		m_FirstPoint = point;
-		SetCapture();
-	}
-}
 
 
 std::shared_ptr<CElement> CSketcherView::CreateElement() const
@@ -248,7 +249,7 @@ std::shared_ptr<CElement> CSketcherView::CreateElement() const
 		return nullptr;
 	}
 
-	return std::shared_ptr<CElement>();
+//	return std::shared_ptr<CElement>();
 }
 
 

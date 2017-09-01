@@ -6,7 +6,7 @@ static const UINT VERSION_NUMBER{ 1001 };                                     //
 
 class CElement : public CObject
 {
-	DECLARE_SERIAL(CElement)
+DECLARE_SERIAL(CElement)
 protected:
 	CPoint m_StartPoint;
 	int m_PenWidth;
