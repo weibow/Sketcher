@@ -16,7 +16,9 @@ public:
 	
 	virtual ~CElement();
 	virtual void Draw(CDC* pDC, std::shared_ptr<CElement> pElement=nullptr) {}	//Virtual draw operation
-	//virtual void Serialize(CArchive & ar) override;
+	virtual void Move(const CSize& aSize) {}
+													
+																				//virtual void Serialize(CArchive & ar) override;
 																				//Get the element enclosing rectangle
 	const CRect& GetEnclosingRect() const { return m_EnclosingRect; }
 protected:

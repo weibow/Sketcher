@@ -38,6 +38,13 @@ void CLine::Draw(CDC* pDC, std::shared_ptr<CElement> pElement)
 	pDC->SelectObject(pOldPen);
 }
 
+void CLine::Move(const CSize & aSize)
+{
+	m_StartPoint += aSize;
+	m_EndPoint += aSize;
+	m_EnclosingRect += aSize;
+}
+
 void CLine::Serialize(CArchive& ar)
 {
 	CElement::Serialize(ar);

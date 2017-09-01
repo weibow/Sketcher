@@ -44,14 +44,18 @@ protected:
 protected:
 	DECLARE_MESSAGE_MAP()
 	// First point recorded for an element
-	CPoint m_FirstPoint;
+	
 public:
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 protected:
+	CPoint m_FirstPoint;
 	CPoint m_SecondPoint;
+	CPoint m_CursorPos;
+	CPoint m_FirstPos;
 	std::shared_ptr<CElement> m_pTempElement;
+	bool m_MoveMode{ false };
 protected:
 	std::shared_ptr<CElement> CreateElement() const;
 	virtual void OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/);
@@ -67,6 +71,10 @@ protected:
 	int m_Scale{ 1 };
 public:
 	afx_msg void OnUpdateIndicatorScale(CCmdUI *pCmdUI);
+	afx_msg void OnElementMove();
+protected:
+	// Move an element
+	void MoveElement(CClientDC& aDC, const CPoint& point);
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp

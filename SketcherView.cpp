@@ -40,6 +40,7 @@ BEGIN_MESSAGE_MAP(CSketcherView, CScrollView)
 	ON_WM_CONTEXTMENU()
 	ON_COMMAND(ID_VIEW_SCALE, &CSketcherView::OnViewScale)
 	ON_UPDATE_COMMAND_UI(ID_INDICATOR_SCALE, &CSketcherView::OnUpdateIndicatorScale)
+	ON_COMMAND(ID_ELEMENT_MOVE, &CSketcherView::OnElementMove)
 END_MESSAGE_MAP()
 
 // CSketcherView construction/destruction
@@ -151,8 +152,15 @@ void CSketcherView::OnLButtonDown(UINT nFlags, CPoint point)
 	OnPrepareDC(&aDC);
 	aDC.DPtoLP(&point);
 	CSketcherDoc* pDoc{ GetDocument() };
-
-	if (pDoc->GetElementType() == ElementType::TEXT)
+	if (m_MoveMode)
+	{
+		m_MoveMode = false;
+		auto pElement(m_pSelected);
+		m_pSelected.reset();
+		pDoc->UpdateAllViews(nullptr, 0, pElement.get());
+		pDoc->SetModifiedFlag();
+	} 
+	else if (pDoc->GetElementType() == ElementType::TEXT)
 	{
 		CTextDialog aDlg;
 		if (aDlg.DoModal() == IDOK)
@@ -186,7 +194,11 @@ void CSketcherView::OnMouseMove(UINT nFlags, CPoint point)
 	aDC.DPtoLP(&point);
 
 	//CView::OnMouseMove(nFlags, point);
-	if ((nFlags & MK_LBUTTON) && (this == GetCapture()))
+	if (m_MoveMode)
+	{
+		MoveElement(aDC, point);
+	}
+	else if ((nFlags & MK_LBUTTON) && (this == GetCapture()))
 	{
 		m_SecondPoint = point;
 		if (m_pTempElement)
@@ -353,4 +365,37 @@ void CSketcherView::OnUpdateIndicatorScale(CCmdUI *pCmdUI)
 	CString scaleStr;
 	scaleStr.Format(_T(" View Scale : %d"), m_Scale);
 	pCmdUI->SetText(scaleStr);
+}
+
+
+void CSketcherView::OnElementMove()
+{
+	// TODO: 在此添加命令处理程序代码
+	CClientDC aDC{ this };
+	OnPrepareDC(&aDC);
+	GetCursorPos(&m_CursorPos);
+	ScreenToClient(&m_CursorPos);
+	aDC.DPtoLP(&m_CursorPos);
+	m_FirstPos = m_CursorPos;
+	m_MoveMode = true;
+}
+
+
+// Move an element
+void CSketcherView::MoveElement(CClientDC& aDC, const CPoint& point)
+{
+	CSize distance{ point - m_CursorPos };
+	m_CursorPos = point;
+
+	if (m_pSelected)
+	{
+		CSketcherDoc* pDoc{ GetDocument() };
+		pDoc->UpdateAllViews(this, 0L, m_pSelected.get());
+		aDC.SetROP2(R2_NOTXORPEN);
+		m_pSelected->Draw(&aDC, m_pSelected);
+		m_pSelected->Move(distance);
+		m_pSelected->Draw(&aDC, m_pSelected);
+
+		pDoc->UpdateAllViews(this, 0, m_pSelected.get());
+	}
 }

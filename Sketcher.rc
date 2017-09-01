@@ -132,7 +132,7 @@ IDR_CONTEXT_MENU MENU
 BEGIN
     POPUP "element"
     BEGIN
-        MENUITEM "Move",                        ID_ELEMENT_MOVE32795
+        MENUITEM "Move",                        ID_ELEMENT_MOVE
         MENUITEM "Delete",                      ID_ELEMENT_DELETE32796
     END
     POPUP "no element"
