@@ -42,6 +42,7 @@ BEGIN_MESSAGE_MAP(CSketcherView, CScrollView)
 	ON_UPDATE_COMMAND_UI(ID_INDICATOR_SCALE, &CSketcherView::OnUpdateIndicatorScale)
 	ON_COMMAND(ID_ELEMENT_MOVE, &CSketcherView::OnElementMove)
 	ON_COMMAND(ID_ELEMENT_SENDTOBACK, &CSketcherView::OnElementSendtoback)
+	ON_COMMAND(ID_ELEMENT_DELETE, &CSketcherView::OnElementDelete)
 END_MESSAGE_MAP()
 
 // CSketcherView construction/destruction
@@ -335,14 +336,14 @@ void CSketcherView::OnContextMenu(CWnd* pWnd, CPoint point)
 }
 
 
-void CSketcherView::OnElementDelete()
-{
-	if (m_pSelected)
-	{
-		GetDocument()->DeleteElement(m_pSelected);
-		m_pSelected.reset();
-	}
-}
+//void CSketcherView::OnElementDelete()
+//{
+//	if (m_pSelected)
+//	{
+//		GetDocument()->DeleteElement(m_pSelected);
+//		m_pSelected.reset();
+//	}
+//}
 
 
 void CSketcherView::OnViewScale()
@@ -405,4 +406,15 @@ void CSketcherView::MoveElement(CClientDC& aDC, const CPoint& point)
 void CSketcherView::OnElementSendtoback()
 {
 	// TODO: 在此添加命令处理程序代码
+}
+
+
+void CSketcherView::OnElementDelete()
+{
+	// TODO: 在此添加命令处理程序代码
+		if (m_pSelected)
+		{
+			GetDocument()->DeleteElement(m_pSelected);
+			m_pSelected.reset();
+		}
 }

@@ -70,13 +70,14 @@ protected:
 	int m_Scale{ 1 };
 public:
 	afx_msg void OnUpdateIndicatorScale(CCmdUI *pCmdUI);
-	void OnElementDelete();
+	//void OnElementDelete();
 	afx_msg void OnElementMove();
 protected:
 	// Move an element
 	void MoveElement(CClientDC& aDC, const CPoint& point);
 public:
 	afx_msg void OnElementSendtoback();
+	afx_msg void OnElementDelete();
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp
