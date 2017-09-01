@@ -65,16 +65,18 @@ protected:
 	std::shared_ptr<CElement> m_pSelected;
 public:
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
-	void OnElementDelete();
 	afx_msg void OnViewScale();
 protected:
 	int m_Scale{ 1 };
 public:
 	afx_msg void OnUpdateIndicatorScale(CCmdUI *pCmdUI);
+	void OnElementDelete();
 	afx_msg void OnElementMove();
 protected:
 	// Move an element
 	void MoveElement(CClientDC& aDC, const CPoint& point);
+public:
+	afx_msg void OnElementSendtoback();
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp

@@ -110,4 +110,5 @@ public:
 	afx_msg void OnPenWidth();
 	int GetPenWidth() const { return m_PenWidth; }
 
+	void SendToBack(std::shared_ptr<CElement>& pElement);
 };

@@ -329,3 +329,13 @@ void CSketcherDoc::OnUpdateElementText(CCmdUI *pCmdUI)
 
 
 
+
+
+void CSketcherDoc::SendToBack(std::shared_ptr<CElement>& pElement)
+{
+	if (pElement)
+	{
+		m_Sketch.remove(pElement);
+		m_Sketch.push_back(pElement);
+	}
+}

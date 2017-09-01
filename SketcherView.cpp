@@ -41,6 +41,7 @@ BEGIN_MESSAGE_MAP(CSketcherView, CScrollView)
 	ON_COMMAND(ID_VIEW_SCALE, &CSketcherView::OnViewScale)
 	ON_UPDATE_COMMAND_UI(ID_INDICATOR_SCALE, &CSketcherView::OnUpdateIndicatorScale)
 	ON_COMMAND(ID_ELEMENT_MOVE, &CSketcherView::OnElementMove)
+	ON_COMMAND(ID_ELEMENT_SENDTOBACK, &CSketcherView::OnElementSendtoback)
 END_MESSAGE_MAP()
 
 // CSketcherView construction/destruction
@@ -398,4 +399,10 @@ void CSketcherView::MoveElement(CClientDC& aDC, const CPoint& point)
 
 		pDoc->UpdateAllViews(this, 0, m_pSelected.get());
 	}
+}
+
+
+void CSketcherView::OnElementSendtoback()
+{
+	// TODO: 在此添加命令处理程序代码
 }

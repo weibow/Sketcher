@@ -151,6 +151,8 @@ protected:
 // Implementation
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	//afx_msg void OnElementSendtoback();
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
@@ -163,6 +165,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+//	ON_COMMAND(ID_ELEMENT_SENDTOBACK, &CAboutDlg::OnElementSendtoback)
 END_MESSAGE_MAP()
 
 // App command to run the dialog
@@ -174,5 +177,9 @@ void CSketcherApp::OnAppAbout()
 
 // CSketcherApp message handlers
 
-
-
+//
+//void CAboutDlg::OnElementSendtoback()
+//{
+//	// TODO: 在此添加命令处理程序代码
+//	GetDocument()->SendToBack(m_pSelected);
+//}

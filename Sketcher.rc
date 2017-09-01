@@ -133,7 +133,9 @@ BEGIN
     POPUP "element"
     BEGIN
         MENUITEM "Move",                        ID_ELEMENT_MOVE
-        MENUITEM "Delete",                      ID_ELEMENT_DELETE32796
+        MENUITEM "Delete",                      ID_ELEMENT_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Send to Back",                ID_ELEMENT_SENDTOBACK
     END
     POPUP "no element"
     BEGIN
