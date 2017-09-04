@@ -19,5 +19,6 @@ public:
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
 
+	HANDLE hCom;
 	DECLARE_MESSAGE_MAP()
 };

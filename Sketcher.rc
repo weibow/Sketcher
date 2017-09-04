@@ -75,6 +75,7 @@ BEGIN
     PUSHBUTTON      "È¡Ïû",IDCANCEL,252,156,50,14
     PUSHBUTTON      "Send",IDC_SEND,76,90,61,26
     PUSHBUTTON      "Receive",IDC_RECEIVE,170,90,61,26
+    LTEXT           "Static",IDC_DISP,83,20,135,62
 END
 
 

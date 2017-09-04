@@ -23,6 +23,7 @@
 #define IDC_PENWIDTH5                   1005
 #define IDC_RECEIVE                     1005
 #define IDC_PENWIDTH4                   1006
+#define IDC_DISP                        1006
 #define ID_COLOR_BLACK                  32771
 #define ID_COLOR_RED                    32772
 #define ID_COLOR_GREEN                  32773
@@ -56,7 +57,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        322
 #define _APS_NEXT_COMMAND_VALUE         32806
-#define _APS_NEXT_CONTROL_VALUE         1006
+#define _APS_NEXT_CONTROL_VALUE         1007
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif
