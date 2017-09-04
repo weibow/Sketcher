@@ -80,7 +80,7 @@ void CPenDialog::OnBnClickedPenwidth0()
 
 
 void CPenDialog::OnBnClickedPenwidth1()
-{
+{	
 	// TODO: 在此添加控件通知处理程序代码
 	m_PenWidth = 1;
 }

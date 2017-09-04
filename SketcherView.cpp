@@ -43,6 +43,7 @@ BEGIN_MESSAGE_MAP(CSketcherView, CScrollView)
 	ON_COMMAND(ID_ELEMENT_MOVE, &CSketcherView::OnElementMove)
 	ON_COMMAND(ID_ELEMENT_SENDTOBACK, &CSketcherView::OnElementSendtoback)
 	ON_COMMAND(ID_ELEMENT_DELETE, &CSketcherView::OnElementDelete)
+	ON_COMMAND(ID_COM_SERIAL, &CSketcherView::OnComSerial)
 END_MESSAGE_MAP()
 
 // CSketcherView construction/destruction
@@ -417,4 +418,10 @@ void CSketcherView::OnElementDelete()
 			GetDocument()->DeleteElement(m_pSelected);
 			m_pSelected.reset();
 		}
+}
+
+
+void CSketcherView::OnComSerial()
+{
+	// TODO: 在此添加命令处理程序代码
 }

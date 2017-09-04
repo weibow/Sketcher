@@ -66,6 +66,17 @@ BEGIN
     RTEXT           "View Scale:",IDC_STATIC,59,48,44,9
 END
 
+IDD_SERIAL_DLG DIALOGEX 0, 0, 309, 177
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,198,156,50,14
+    PUSHBUTTON      "取消",IDCANCEL,252,156,50,14
+    PUSHBUTTON      "Send",IDC_SEND,76,90,61,26
+    PUSHBUTTON      "Receive",IDC_RECEIVE,170,90,61,26
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -98,6 +109,14 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 120
     END
+
+    IDD_SERIAL_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 170
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -118,6 +137,11 @@ BEGIN
 END
 
 IDD_SPIN_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SERIAL_DLG AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
@@ -280,6 +304,12 @@ BEGIN
         MENUITEM "Blue",                        ID_COLOR_BLUE
         MENUITEM SEPARATOR
         MENUITEM "Width",                       ID_PEN_WIDTH
+        MENUITEM "Com",                         ID_PEN_COM
+        MENUITEM SEPARATOR
+    END
+    POPUP "&COM"
+    BEGIN
+        MENUITEM "Serial",                      ID_COM_SERIAL
     END
     MENUITEM "&Window",                     ID_WINDOW
     POPUP "&Help"

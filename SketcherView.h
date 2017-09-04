@@ -78,6 +78,7 @@ protected:
 public:
 	afx_msg void OnElementSendtoback();
 	afx_msg void OnElementDelete();
+	afx_msg void OnComSerial();
 };
 
 #ifndef _DEBUG  // debug version in SketcherView.cpp

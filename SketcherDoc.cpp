@@ -11,6 +11,7 @@
 
 #include "SketcherDoc.h"
 #include "PenDialog.h"
+#include "ComDialog.h"
 #include <propkey.h>
 
 #ifdef _DEBUG
@@ -40,6 +41,9 @@ BEGIN_MESSAGE_MAP(CSketcherDoc, CDocument)
 	ON_COMMAND(ID_ELEMENT_TEXT, &CSketcherDoc::OnElementText)
 	ON_UPDATE_COMMAND_UI(ID_ELEMENT_TEXT, &CSketcherDoc::OnUpdateElementText)
 	ON_COMMAND(ID_PEN_WIDTH, &CSketcherDoc::OnPenWidth)
+	ON_COMMAND(ID_COM_SERIAL, &CSketcherDoc::OnComSerial)
+	ON_COMMAND(ID_PEN_COM, &CSketcherDoc::OnPenCom)
+	ON_UPDATE_COMMAND_UI(ID_COM_SERIAL, &CSketcherDoc::OnUpdateComSerial)
 END_MESSAGE_MAP()
 
 
@@ -287,19 +291,7 @@ void CSketcherDoc::OnUpdateElementCurve(CCmdUI *pCmdUI)
 
 
 
-void CSketcherDoc::OnPenWidth()
-{
-	// TODO: 在此添加命令处理程序代码
-	CPenDialog aDlg;
-	
-	aDlg.m_PenWidth = m_PenWidth;
-	
-	if (aDlg.DoModal() == IDOK)
-	{
-		m_PenWidth = aDlg.m_PenWidth;
-		SetModifiedFlag();
-	}
-}
+
 
 ElementType CSketcherDoc::GetElementType() const
 {
@@ -338,4 +330,43 @@ void CSketcherDoc::SendToBack(std::shared_ptr<CElement>& pElement)
 		m_Sketch.remove(pElement);
 		m_Sketch.push_back(pElement);
 	}
+}
+
+
+void CSketcherDoc::OnComSerial()
+{
+	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
+
+	if (aDlg.DoModal() == IDOK) {
+	}
+
+}
+void CSketcherDoc::OnPenWidth()
+{
+	// TODO: 在此添加命令处理程序代码
+	CPenDialog aDlg;
+
+	aDlg.m_PenWidth = m_PenWidth;
+
+	if (aDlg.DoModal() == IDOK)
+	{
+		m_PenWidth = aDlg.m_PenWidth;
+		SetModifiedFlag();
+	}
+}
+
+void CSketcherDoc::OnPenCom()
+{
+	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
+
+	if (aDlg.DoModal() == IDOK) {
+	}
+}
+
+
+void CSketcherDoc::OnUpdateComSerial(CCmdUI *pCmdUI)
+{
+	// TODO: 在此添加命令更新用户界面处理程序代码
 }
