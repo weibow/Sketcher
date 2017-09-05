@@ -44,6 +44,8 @@ BEGIN_MESSAGE_MAP(CSketcherDoc, CDocument)
 	ON_COMMAND(ID_COM_SERIAL, &CSketcherDoc::OnComSerial)
 	ON_COMMAND(ID_PEN_COM, &CSketcherDoc::OnPenCom)
 	ON_UPDATE_COMMAND_UI(ID_COM_SERIAL, &CSketcherDoc::OnUpdateComSerial)
+	ON_COMMAND(ID_SERIAL_COM, &CSketcherDoc::OnSerialCom)
+	ON_UPDATE_COMMAND_UI(ID_ELEMENT_RECTANGLE, &CSketcherDoc::OnUpdateElementRectangle)
 END_MESSAGE_MAP()
 
 
@@ -289,7 +291,11 @@ void CSketcherDoc::OnUpdateElementCurve(CCmdUI *pCmdUI)
 	pCmdUI->SetCheck(m_Element == ElementType::CURVE);
 }
 
-
+void CSketcherDoc::OnUpdateElementRectangle(CCmdUI *pCmdUI)
+{
+	// TODO: 在此添加命令更新用户界面处理程序代码
+	pCmdUI->SetCheck(m_Element == ElementType::RECTANGLE);
+}
 
 
 
@@ -368,5 +374,18 @@ void CSketcherDoc::OnPenCom()
 
 void CSketcherDoc::OnUpdateComSerial(CCmdUI *pCmdUI)
 {
+
 	// TODO: 在此添加命令更新用户界面处理程序代码
+	pCmdUI->SetCheck(1);
 }
+
+
+void CSketcherDoc::OnSerialCom()
+{
+	// TODO: 在此添加命令处理程序代码
+
+
+}
+
+
+

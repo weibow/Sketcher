@@ -12,7 +12,7 @@
 IMPLEMENT_DYNAMIC(CComDialog, CDialogEx)
 
 CComDialog::CComDialog(CWnd* pParent /*=NULL*/)
-	: CDialogEx(IDD_SERIAL_PORT, pParent)
+	: CDialogEx(IDD_SERIAL_DLG, pParent)
 {
 
 }

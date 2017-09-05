@@ -98,7 +98,8 @@ public:
 	afx_msg void OnUpdateColorBlue(CCmdUI *pCmdUI);
 	afx_msg void OnElementCurve();
 	afx_msg void OnUpdateElementCurve(CCmdUI *pCmdUI);
-	
+	afx_msg void OnUpdateElementRectangle(CCmdUI *pCmdUI);
+
 public:
 	ElementType GetElementType() const;
 	ElementColor GetElementColor() const;
@@ -114,4 +115,6 @@ public:
 	afx_msg void OnComSerial();
 	afx_msg void OnPenCom();
 	afx_msg void OnUpdateComSerial(CCmdUI *pCmdUI);
+	afx_msg void OnSerialCom();
+
 };
