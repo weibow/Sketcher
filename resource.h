@@ -47,17 +47,23 @@
 #define ID_ELEMENT_MOVE                 32800
 #define ID_ELEMENT_SENDTOBACK           32801
 #define ID_ELEMENT_DELETE               32802
-#define ID_COM_SERIAL                   32803
 #define ID_PEN_COM                      32804
 #define ID_Menu                         32805
-#define ID_SERIAL_COM                   32806
+#define ID_PEN_RS485                    32807
+#define ID_COM_RS232                    32808
+#define ID_COM_RS985                    32809
+#define ID_COM_ADD                      32811
+#define ID_COM_SERIAL2                  32812
+#define ID_COM_SERIAL                   32813
+#define ID_COM_SERIAL3                  32814
+#define ID_COM_SERIAL0                  32815
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        322
-#define _APS_NEXT_COMMAND_VALUE         32807
+#define _APS_NEXT_COMMAND_VALUE         32816
 #define _APS_NEXT_CONTROL_VALUE         1007
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

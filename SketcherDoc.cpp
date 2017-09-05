@@ -41,11 +41,19 @@ BEGIN_MESSAGE_MAP(CSketcherDoc, CDocument)
 	ON_COMMAND(ID_ELEMENT_TEXT, &CSketcherDoc::OnElementText)
 	ON_UPDATE_COMMAND_UI(ID_ELEMENT_TEXT, &CSketcherDoc::OnUpdateElementText)
 	ON_COMMAND(ID_PEN_WIDTH, &CSketcherDoc::OnPenWidth)
-	ON_COMMAND(ID_COM_SERIAL, &CSketcherDoc::OnComSerial)
+	//ON_COMMAND(ID_COM_SERIAL, &CSketcherDoc::OnComSerial)
 	ON_COMMAND(ID_PEN_COM, &CSketcherDoc::OnPenCom)
-	ON_UPDATE_COMMAND_UI(ID_COM_SERIAL, &CSketcherDoc::OnUpdateComSerial)
-	ON_COMMAND(ID_SERIAL_COM, &CSketcherDoc::OnSerialCom)
+	//ON_UPDATE_COMMAND_UI(ID_COM_SERIAL, &CSketcherDoc::OnUpdateComSerial)
+	//ON_COMMAND(ID_SERIAL_COM, &CSketcherDoc::OnSerialCom)
 	ON_UPDATE_COMMAND_UI(ID_ELEMENT_RECTANGLE, &CSketcherDoc::OnUpdateElementRectangle)
+	ON_COMMAND(ID_PEN_RS485, &CSketcherDoc::OnPenRs485)
+	ON_COMMAND(ID_COM_RS232, &CSketcherDoc::OnComRs232)
+	ON_COMMAND(ID_COM_RS985, &CSketcherDoc::OnComRs985)
+//	ON_COMMAND(ID_COM_SERIAL, &CSketcherDoc::OnComSerial)
+	ON_COMMAND(ID_COM_ADD, &CSketcherDoc::OnComAdd)
+	ON_COMMAND(ID_COM_SERIAL2, &CSketcherDoc::OnComSerial2)
+	ON_COMMAND(ID_COM_SERIAL0, &CSketcherDoc::OnComSerial0)
+	ON_COMMAND(ID_COM_SERIAL, &CSketcherDoc::OnComSerial)
 END_MESSAGE_MAP()
 
 
@@ -339,15 +347,15 @@ void CSketcherDoc::SendToBack(std::shared_ptr<CElement>& pElement)
 }
 
 
-void CSketcherDoc::OnComSerial()
-{
-	// TODO: 在此添加命令处理程序代码
-	CComDialog aDlg;
-
-	if (aDlg.DoModal() == IDOK) {
-	}
-
-}
+//void CSketcherDoc::OnComSerial()
+//{
+//	// TODO: 在此添加命令处理程序代码
+//	CComDialog aDlg;
+//
+//	if (aDlg.DoModal() == IDOK) {
+//	}
+//
+//}
 void CSketcherDoc::OnPenWidth()
 {
 	// TODO: 在此添加命令处理程序代码
@@ -372,20 +380,101 @@ void CSketcherDoc::OnPenCom()
 }
 
 
-void CSketcherDoc::OnUpdateComSerial(CCmdUI *pCmdUI)
-{
+//void CSketcherDoc::OnUpdateComSerial(CCmdUI *pCmdUI)
+//{
+//
+//	// TODO: 在此添加命令更新用户界面处理程序代码
+//	pCmdUI->SetCheck(1);
+//}
 
-	// TODO: 在此添加命令更新用户界面处理程序代码
-	pCmdUI->SetCheck(1);
-}
+
+//void CSketcherDoc::OnSerialCom()
+//{
+//	// TODO: 在此添加命令处理程序代码
+//
+//
+//}
 
 
-void CSketcherDoc::OnSerialCom()
+
+
+
+void CSketcherDoc::OnPenRs485()
 {
 	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
 
-
+	if (aDlg.DoModal() == IDOK) {
+	}
 }
 
 
+void CSketcherDoc::OnComRs232()
+{
+	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
 
+	if (aDlg.DoModal() == IDOK) {
+	}
+}
+
+
+void CSketcherDoc::OnComRs985()
+{
+	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
+
+	if (aDlg.DoModal() == IDOK) {
+	}
+}
+
+
+//void CSketcherDoc::OnComSerial()
+//{
+//	// TODO: 在此添加命令处理程序代码
+//	CComDialog aDlg;
+//
+//	if (aDlg.DoModal() == IDOK) {
+//	}
+//}
+
+
+void CSketcherDoc::OnComAdd()
+{
+	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
+
+	if (aDlg.DoModal() == IDOK) {
+	}
+}
+
+
+void CSketcherDoc::OnComSerial2()
+{
+	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
+
+	if (aDlg.DoModal() == IDOK) {
+	}
+}
+
+
+void CSketcherDoc::OnComSerial0()
+{
+	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
+
+	if (aDlg.DoModal() == IDOK) {
+	}
+}
+
+
+void CSketcherDoc::OnComSerial()
+{
+	// TODO: 在此添加命令处理程序代码
+	// TODO: 在此添加命令处理程序代码
+	CComDialog aDlg;
+
+	if (aDlg.DoModal() == IDOK) {
+	}
+}

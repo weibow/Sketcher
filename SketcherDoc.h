@@ -112,9 +112,17 @@ public:
 	int GetPenWidth() const { return m_PenWidth; }
 
 	void SendToBack(std::shared_ptr<CElement>& pElement);
-	afx_msg void OnComSerial();
+	//afx_msg void OnComSerial();
 	afx_msg void OnPenCom();
-	afx_msg void OnUpdateComSerial(CCmdUI *pCmdUI);
-	afx_msg void OnSerialCom();
+	//afx_msg void OnUpdateComSerial(CCmdUI *pCmdUI);
+	//afx_msg void OnSerialCom();
 
+	afx_msg void OnPenRs485();
+	afx_msg void OnComRs232();
+	afx_msg void OnComRs985();
+	//afx_msg void OnComSerial();
+	afx_msg void OnComAdd();
+	afx_msg void OnComSerial2();
+	afx_msg void OnComSerial0();
+	afx_msg void OnComSerial();
 };

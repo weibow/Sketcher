@@ -307,10 +307,16 @@ BEGIN
         MENUITEM "Width",                       ID_PEN_WIDTH
         MENUITEM "Com",                         ID_PEN_COM
         MENUITEM SEPARATOR
+        MENUITEM "RS485",                       ID_PEN_RS485
     END
     POPUP "&COM"
     BEGIN
-        MENUITEM "Serial",                      65535
+        MENUITEM "RS232",                       ID_COM_RS232
+        MENUITEM "RS985",                       ID_COM_RS985
+        MENUITEM "Serial",                      ID_COM_SERIAL
+        MENUITEM "ADD",                         ID_COM_ADD
+        MENUITEM "Serial2",                     ID_COM_SERIAL2
+        MENUITEM "Serial3",                     ID_COM_SERIAL3
     END
     MENUITEM "&Window",                     ID_WINDOW
     POPUP "&Help"
