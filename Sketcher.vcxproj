@@ -196,6 +196,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="binary_tree.h" />
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="ComDialog.h" />
@@ -218,6 +219,7 @@
     <ClInclude Include="TextDialog.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="binary_tree.cpp" />
     <ClCompile Include="ChildFrm.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="ComDialog.cpp" />
